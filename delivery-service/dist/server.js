@@ -4,14 +4,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const delivery_controller_1 = require("./delivery.controller");
-const delivery_service_1 = require("./delivery.service");
+const delivery_service_1 = require("./services/delivery.service");
+const delivery_route_1 = __importDefault(require("./routes/delivery.route"));
 const app = (0, express_1.default)();
-const PORT = 3002;
+const PORT = process.env.PORT || 3002;
 app.use(express_1.default.json());
-app.get('/delivery/:orderId', delivery_controller_1.getOrderStatus);
+// Rutas
+app.use(delivery_route_1.default);
 app.listen(PORT, async () => {
-    await delivery_service_1.deliveryService.initialize();
-    console.log(`Delivery service running on port ${PORT}`);
+    try {
+        await delivery_service_1.deliveryService.initialize();
+        console.log(`Delivery service running on port ${PORT}`);
+        console.log('Available endpoints:');
+        console.log('  GET /delivery/:orderId - Get delivery status');
+        console.log('  GET /deliveries - Get all deliveries');
+        console.log('  POST /delivery/:orderId/simulate-issue - Simulate delivery issue');
+    }
+    catch (error) {
+        console.error('Failed to start delivery service:', error);
+        process.exit(1);
+    }
 });
 //# sourceMappingURL=server.js.map
