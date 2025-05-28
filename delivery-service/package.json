@@ -18,7 +18,10 @@
     "amqplib": "0.10.5",
     "express": "^5.1.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "sequelize": "^6.35.0",
+    "mysql2": "^3.6.5",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/amqplib": "0.10.6"

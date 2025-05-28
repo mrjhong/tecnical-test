@@ -1,12 +1,15 @@
 import express from 'express';
-import { createOrderController, getOrderStatusController, getAllOrdersController,getOrderStatsController } from '../controllers/order.controller';
+import { 
+  createOrderController, 
+  getOrderStatusController, 
+  getCoordinatorStatsController 
+} from '../controllers/order.controller';
 
 const router = express.Router();
 
-// Rutas
+// Rutas del coordinador
 router.post('/orders', createOrderController);
-router.get('/orders/:orderId', getOrderStatusController);
-router.get('/orders', getAllOrdersController);
-router.get('/stats', getOrderStatsController);
+router.get('/orders/:orderId/status', getOrderStatusController);
+router.get('/coordinator/stats', getCoordinatorStatsController);
 
 export default router;
