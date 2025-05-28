@@ -1,6 +1,6 @@
 import express from 'express';
-import { getInventory } from './inventory.controller';
-import { inventoryService } from './inventory.service';
+import { getInventory } from './controllers/inventory.controller';
+import { inventoryService } from './services/inventory.service';
 
 const app = express();
 const PORT = 3001;

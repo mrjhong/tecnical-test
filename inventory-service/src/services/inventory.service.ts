@@ -1,4 +1,4 @@
-import { InventoryItem, InventoryCheckRequest, InventoryCheckResponse } from './types';
+import { InventoryItem, InventoryCheckRequest, InventoryCheckResponse } from '../types';
 import * as amqp from 'amqplib';
 
 class InventoryService {
